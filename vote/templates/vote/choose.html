@@ -35,30 +35,26 @@
         <span class="display-5 fw-bold">choice</span>
       </a>
     </header>
-    {% for entry in votes %}
+    {% for entry in options %}
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2">
         <div class="panel panel-default">
           <div class="panel-body">
-            <h3>{{entry.text}}</h3>
+            <h3>president post</h3>
           </div>
-
           <ul class="list-group">
-            <form  method="post">
-              <li class="list-group-item">A  <input type="radio" name="president" value="A"></li>
-              <li class="list-group-item">B  <input type="radio" name="president" value="B"></li>
-              <li class="list-group-item">C  <input type="radio" name="president" value="C"></li>
+            {% csrf token %}
+            <form  method="POST">
+              <li class="list-group-item">{{entry.option_one}}  <input type="radio" name="president" value="A"></li>
+              <li class="list-group-item">{{entry.option_two}}  <input type="radio" name="president" value="B"></li>
+              <li class="list-group-item">{{entry.option_three}}  <input type="radio" name="president" value="C"></li>
               <li class="list-group-item"><button type="submit" class="btn btn-secondary" name="button">submit</button></li>
             </form>
           </ul>
-          <div class="panel-body">
-            <h3>choose a {{entry.text}} </h3>
-          </div>
         </div>
       </div>
     </div>
     {% endfor %}
-
     <footer class="pt-3 mt-4 text-muted border-top">
       © 2021
     </footer>
